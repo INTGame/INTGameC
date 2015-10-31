@@ -1,4 +1,3 @@
-
 alter table "BlogImages"
    drop constraint FK_BLOGIMAG_BLOG_CONT_BLOGS;
 
@@ -27,10 +26,10 @@ alter table "GroupParticipants"
    drop constraint FK_GROUPPAR_GROUPPART_GROUPS;
 
 alter table "GroupParticipants"
-   drop constraint FK_GROUPPAR_USER_GROU_USERS;
+   drop constraint FK_GROUPPAR_GROUPPART_GROUPROL;
 
-alter table "GroupRoles"
-   drop constraint FK_GROUPROL_GROUPPART_GROUPPAR;
+alter table "GroupParticipants"
+   drop constraint FK_GROUPPAR_USER_GROU_USERS;
 
 alter table "Groups"
    drop constraint FK_GROUPS_CHAT_GROU_CHATS;
@@ -57,7 +56,7 @@ alter table "Question_Category"
    drop constraint FK_QUESTION_QUESTION__QUESTION;
 
 alter table "Question_Category"
-   drop constraint FK_QUESTION_QUESTION__CATEGORY;
+   drop constraint FK_QUESTION_QUESTION__CATEGORI;
 
 alter table "Questions"
    drop constraint FK_QUESTION_GAME_QUES_GAMES;
@@ -101,7 +100,7 @@ drop index "publish blogs_FK";
 
 drop table "Blogs" cascade constraints;
 
-drop table "Categorys" cascade constraints;
+drop table "Categories" cascade constraints;
 
 drop index "Chat_Conversation2_FK";
 
@@ -123,11 +122,11 @@ drop table "Games" cascade constraints;
 
 drop index "GroupParticipant_Group_FK";
 
+drop index "GroupParticipant_GroupRole_FK";
+
 drop index "User_GroupParticipant_FK";
 
 drop table "GroupParticipants" cascade constraints;
-
-drop index "GroupParticipant_GroupRole_FK";
 
 drop table "GroupRoles" cascade constraints;
 

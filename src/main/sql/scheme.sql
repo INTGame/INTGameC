@@ -1,14 +1,8 @@
-/*==============================================================*/
-/* DBMS name:      ORACLE Version 11g                           */
-/* Created on:     24.10.2015 13:59:05                          */
-/*==============================================================*/
-
-
 
 /*==============================================================*/
 /* Table: "Admin"                                               */
 /*==============================================================*/
-create table "Admin" 
+create table "Admin"
 (
    "AdminId"            INTEGER              not null,
    "AdminNick"          VARCHAR2(55),
@@ -20,7 +14,7 @@ create table "Admin"
 /*==============================================================*/
 /* Table: "BlogImages"                                          */
 /*==============================================================*/
-create table "BlogImages" 
+create table "BlogImages"
 (
    "BlogImagesId"       INTEGER              not null,
    "BlogId"             INTEGER,
@@ -36,9 +30,9 @@ create index "Blog_Content_FK" on "BlogImages" (
 );
 
 /*==============================================================*/
-/* Table: "Blog"                                               */
+/* Table: "Blogs"                                               */
 /*==============================================================*/
-create table "Blogs" 
+create table "Blogs"
 (
    "BlogId"             INTEGER              not null,
    "LanguageId"         INTEGER,
@@ -65,19 +59,19 @@ create index "Blog_Language_FK" on "Blogs" (
 );
 
 /*==============================================================*/
-/* Table: "Categorys"                                           */
+/* Table: "Categories"                                          */
 /*==============================================================*/
-create table "Categorys" 
+create table "Categories"
 (
    "CategoryId"         INTEGER              not null,
    "CategoryName"       VARCHAR2(100),
-   constraint PK_CATEGORYS primary key ("CategoryId")
+   constraint PK_CATEGORIES primary key ("CategoryId")
 );
 
 /*==============================================================*/
 /* Table: "Chats"                                               */
 /*==============================================================*/
-create table "Chats" 
+create table "Chats"
 (
    "ChatId"             INTEGER              not null,
    "GroupId"            INTEGER,
@@ -111,7 +105,7 @@ create index "Chat_Conversation2_FK" on "Chats" (
 /*==============================================================*/
 /* Table: "Cities"                                              */
 /*==============================================================*/
-create table "Cities" 
+create table "Cities"
 (
    "CityId"             INTEGER              not null,
    "CountryId"          INTEGER,
@@ -129,7 +123,7 @@ create index "Country_City_FK" on "Cities" (
 /*==============================================================*/
 /* Table: "Countries"                                           */
 /*==============================================================*/
-create table "Countries" 
+create table "Countries"
 (
    "CountryId"          INTEGER              not null,
    "CountryName"        VARCHAR2(55),
@@ -139,7 +133,7 @@ create table "Countries"
 /*==============================================================*/
 /* Table: "Games"                                               */
 /*==============================================================*/
-create table "Games" 
+create table "Games"
 (
    "GameId"             INTEGER              not null,
    "GroupId"            INTEGER,
@@ -161,11 +155,12 @@ create index "Game_Group_FK" on "Games" (
 /*==============================================================*/
 /* Table: "GroupParticipants"                                   */
 /*==============================================================*/
-create table "GroupParticipants" 
+create table "GroupParticipants"
 (
    "GroupParticipantId" INTEGER              not null,
    "GroupId"            INTEGER,
    "UserId"             INTEGER,
+   "GroupRoleId"        INTEGER,
    "GroupInviteDate"    DATE,
    "GroupAccessionDate" DATE,
    constraint PK_GROUPPARTICIPANTS primary key ("GroupParticipantId")
@@ -179,6 +174,13 @@ create index "User_GroupParticipant_FK" on "GroupParticipants" (
 );
 
 /*==============================================================*/
+/* Index: "GroupParticipant_GroupRole_FK"                       */
+/*==============================================================*/
+create index "GroupParticipant_GroupRole_FK" on "GroupParticipants" (
+   "GroupRoleId" ASC
+);
+
+/*==============================================================*/
 /* Index: "GroupParticipant_Group_FK"                           */
 /*==============================================================*/
 create index "GroupParticipant_Group_FK" on "GroupParticipants" (
@@ -188,26 +190,18 @@ create index "GroupParticipant_Group_FK" on "GroupParticipants" (
 /*==============================================================*/
 /* Table: "GroupRoles"                                          */
 /*==============================================================*/
-create table "GroupRoles" 
+create table "GroupRoles"
 (
    "GroupRoleId"        INTEGER              not null,
-   "GroupParticipantId" INTEGER,
    "GroupRole"          VARCHAR2(55),
    "GroupRoleDescription" CLOB,
    constraint PK_GROUPROLES primary key ("GroupRoleId")
 );
 
 /*==============================================================*/
-/* Index: "GroupParticipant_GroupRole_FK"                       */
-/*==============================================================*/
-create index "GroupParticipant_GroupRole_FK" on "GroupRoles" (
-   "GroupParticipantId" ASC
-);
-
-/*==============================================================*/
 /* Table: "Groups"                                              */
 /*==============================================================*/
-create table "Groups" 
+create table "Groups"
 (
    "GroupId"            INTEGER              not null,
    "ChatId"             INTEGER,
@@ -228,7 +222,7 @@ create index "Chat_Group_FK" on "Groups" (
 /*==============================================================*/
 /* Table: "IndividualConversations"                             */
 /*==============================================================*/
-create table "IndividualConversations" 
+create table "IndividualConversations"
 (
    "IndividualConversationId" INTEGER              not null,
    "UserId"             INTEGER,
@@ -261,7 +255,7 @@ create index "UserRecipient_Conversation_FK" on "IndividualConversations" (
 /*==============================================================*/
 /* Table: "Languages"                                           */
 /*==============================================================*/
-create table "Languages" 
+create table "Languages"
 (
    "LanguageId"         INTEGER              not null,
    "LanguageName"       VARCHAR2(55),
@@ -271,7 +265,7 @@ create table "Languages"
 /*==============================================================*/
 /* Table: "Messages"                                            */
 /*==============================================================*/
-create table "Messages" 
+create table "Messages"
 (
    "MessageId"          INTEGER              not null,
    "ChatId"             INTEGER,
@@ -298,7 +292,7 @@ create index "User_Message_FK" on "Messages" (
 /*==============================================================*/
 /* Table: "MultimediaContents"                                  */
 /*==============================================================*/
-create table "MultimediaContents" 
+create table "MultimediaContents"
 (
    "MultimediaContentId" INTEGER              not null,
    "QuestionId"         INTEGER,
@@ -316,7 +310,7 @@ create index "Question_Content_FK" on "MultimediaContents" (
 /*==============================================================*/
 /* Table: "Question_Category"                                   */
 /*==============================================================*/
-create table "Question_Category" 
+create table "Question_Category"
 (
    "QuestionId"         INTEGER              not null,
    "CategoryId"         INTEGER              not null,
@@ -340,7 +334,7 @@ create index "Question_Category2_FK" on "Question_Category" (
 /*==============================================================*/
 /* Table: "Questions"                                           */
 /*==============================================================*/
-create table "Questions" 
+create table "Questions"
 (
    "QuestionId"         INTEGER              not null,
    "GameId"             INTEGER,
@@ -359,7 +353,7 @@ create index "Game_Question_FK" on "Questions" (
 /*==============================================================*/
 /* Table: "Relationships"                                       */
 /*==============================================================*/
-create table "Relationships" 
+create table "Relationships"
 (
    "RelationshipId"     INTEGER              not null,
    "UserId"             INTEGER,
@@ -386,7 +380,7 @@ create index "User_RelationshipFrom_FK" on "Relationships" (
 /*==============================================================*/
 /* Table: "TeamParticipants"                                    */
 /*==============================================================*/
-create table "TeamParticipants" 
+create table "TeamParticipants"
 (
    "TeamParticipantId"  INTEGER              not null,
    "TeamId"             INTEGER,
@@ -394,7 +388,7 @@ create table "TeamParticipants"
    "UserId"             INTEGER,
    "TeamInviteDate"     DATE,
    "TeamAccessionDate"  DATE,
-   "�ontribution"       INTEGER,
+   "Contribution"       INTEGER,
    constraint PK_TEAMPARTICIPANTS primary key ("TeamParticipantId")
 );
 
@@ -422,7 +416,7 @@ create index "TeamParticipant_TeamRole_FK" on "TeamParticipants" (
 /*==============================================================*/
 /* Table: "TeamRoles"                                           */
 /*==============================================================*/
-create table "TeamRoles" 
+create table "TeamRoles"
 (
    "TeamRoleId"         INTEGER              not null,
    "TeamRole"           VARCHAR2(55),
@@ -433,7 +427,7 @@ create table "TeamRoles"
 /*==============================================================*/
 /* Table: "Teams"                                               */
 /*==============================================================*/
-create table "Teams" 
+create table "Teams"
 (
    "TeamId"             INTEGER              not null,
    "ChatId"             INTEGER,
@@ -459,7 +453,7 @@ create index "Chat_Team_FK" on "Teams" (
 /*==============================================================*/
 /* Table: "Users"                                               */
 /*==============================================================*/
-create table "Users" 
+create table "Users"
 (
    "UserId"             INTEGER              not null,
    "CityId"             INTEGER,
@@ -497,122 +491,121 @@ create index "User_Language_FK" on "Users" (
 );
 
 alter table "BlogImages"
-   add constraint FK_BLOGIMAG_BLOG_CONT_BLOGS foreign key ("BlogId")
-      references "Blogs" ("BlogId");
+add constraint FK_BLOGIMAG_BLOG_CONT_BLOGS foreign key ("BlogId")
+references "Blogs" ("BlogId");
 
 alter table "Blogs"
-   add constraint FK_BLOGS_BLOG_LANG_LANGUAGE foreign key ("LanguageId")
-      references "Languages" ("LanguageId");
+add constraint FK_BLOGS_BLOG_LANG_LANGUAGE foreign key ("LanguageId")
+references "Languages" ("LanguageId");
 
 alter table "Blogs"
-   add constraint "FK_BLOGS_PUBLISH B_USERS" foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint "FK_BLOGS_PUBLISH B_USERS" foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "Chats"
-   add constraint FK_CHATS_CHAT_CONV_INDIVIDU foreign key ("IndividualConversationId")
-      references "IndividualConversations" ("IndividualConversationId");
+add constraint FK_CHATS_CHAT_CONV_INDIVIDU foreign key ("IndividualConversationId")
+references "IndividualConversations" ("IndividualConversationId");
 
 alter table "Chats"
-   add constraint FK_CHATS_CHAT_GROU_GROUPS foreign key ("GroupId")
-      references "Groups" ("GroupId");
+add constraint FK_CHATS_CHAT_GROU_GROUPS foreign key ("GroupId")
+references "Groups" ("GroupId");
 
 alter table "Chats"
-   add constraint FK_CHATS_CHAT_TEAM_TEAMS foreign key ("TeamId")
-      references "Teams" ("TeamId");
+add constraint FK_CHATS_CHAT_TEAM_TEAMS foreign key ("TeamId")
+references "Teams" ("TeamId");
 
 alter table "Cities"
-   add constraint FK_CITIES_COUNTRY_C_COUNTRIE foreign key ("CountryId")
-      references "Countries" ("CountryId");
+add constraint FK_CITIES_COUNTRY_C_COUNTRIE foreign key ("CountryId")
+references "Countries" ("CountryId");
 
 alter table "Games"
-   add constraint FK_GAMES_GAME_GROU_GROUPS foreign key ("GroupId")
-      references "Groups" ("GroupId");
+add constraint FK_GAMES_GAME_GROU_GROUPS foreign key ("GroupId")
+references "Groups" ("GroupId");
 
 alter table "GroupParticipants"
-   add constraint FK_GROUPPAR_GROUPPART_GROUPS foreign key ("GroupId")
-      references "Groups" ("GroupId");
+add constraint FK_GROUPPAR_GROUPPART_GROUPS foreign key ("GroupId")
+references "Groups" ("GroupId");
 
 alter table "GroupParticipants"
-   add constraint FK_GROUPPAR_USER_GROU_USERS foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint FK_GROUPPAR_GROUPPART_GROUPROL foreign key ("GroupRoleId")
+references "GroupRoles" ("GroupRoleId");
 
-alter table "GroupRoles"
-   add constraint FK_GROUPROL_GROUPPART_GROUPPAR foreign key ("GroupParticipantId")
-      references "GroupParticipants" ("GroupParticipantId");
+alter table "GroupParticipants"
+add constraint FK_GROUPPAR_USER_GROU_USERS foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "Groups"
-   add constraint FK_GROUPS_CHAT_GROU_CHATS foreign key ("ChatId")
-      references "Chats" ("ChatId");
+add constraint FK_GROUPS_CHAT_GROU_CHATS foreign key ("ChatId")
+references "Chats" ("ChatId");
 
 alter table "IndividualConversations"
-   add constraint FK_INDIVIDU_CHAT_CONV_CHATS foreign key ("ChatId")
-      references "Chats" ("ChatId");
+add constraint FK_INDIVIDU_CHAT_CONV_CHATS foreign key ("ChatId")
+references "Chats" ("ChatId");
 
 alter table "IndividualConversations"
-   add constraint FK_INDIVIDU_USERRECIP_USERS foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint FK_INDIVIDU_USERRECIP_USERS foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "IndividualConversations"
-   add constraint FK_INDIVIDU_USERSENDE_USERS foreign key ("Use_UserId")
-      references "Users" ("UserId");
+add constraint FK_INDIVIDU_USERSENDE_USERS foreign key ("Use_UserId")
+references "Users" ("UserId");
 
 alter table "Messages"
-   add constraint FK_MESSAGES_CHAT_MESS_CHATS foreign key ("ChatId")
-      references "Chats" ("ChatId");
+add constraint FK_MESSAGES_CHAT_MESS_CHATS foreign key ("ChatId")
+references "Chats" ("ChatId");
 
 alter table "Messages"
-   add constraint FK_MESSAGES_USER_MESS_USERS foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint FK_MESSAGES_USER_MESS_USERS foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "MultimediaContents"
-   add constraint FK_MULTIMED_QUESTION__QUESTION foreign key ("QuestionId")
-      references "Questions" ("QuestionId");
+add constraint FK_MULTIMED_QUESTION__QUESTION foreign key ("QuestionId")
+references "Questions" ("QuestionId");
 
 alter table "Question_Category"
-   add constraint FK_QUESTION_QUESTION__QUESTION foreign key ("QuestionId")
-      references "Questions" ("QuestionId");
+add constraint FK_QUESTION_QUESTION__QUESTION foreign key ("QuestionId")
+references "Questions" ("QuestionId");
 
 alter table "Question_Category"
-   add constraint FK_QUESTION_QUESTION__CATEGORY foreign key ("CategoryId")
-      references "Categorys" ("CategoryId");
+add constraint FK_QUESTION_QUESTION__CATEGORI foreign key ("CategoryId")
+references "Categories" ("CategoryId");
 
 alter table "Questions"
-   add constraint FK_QUESTION_GAME_QUES_GAMES foreign key ("GameId")
-      references "Games" ("GameId");
+add constraint FK_QUESTION_GAME_QUES_GAMES foreign key ("GameId")
+references "Games" ("GameId");
 
 alter table "Relationships"
-   add constraint FK_RELATION_USER_RELA_USERS foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint FK_RELATION_USER_RELA_USERS foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "Relationships"
-   add constraint FK_RELATION_USER_RELA_USERS2 foreign key ("Use_UserId")
-      references "Users" ("UserId");
+add constraint FK_RELATION_USER_RELA_USERS2 foreign key ("Use_UserId")
+references "Users" ("UserId");
 
 alter table "TeamParticipants"
-   add constraint FK_TEAMPART_TEAMPARTI_TEAMROLE foreign key ("TeamRoleId")
-      references "TeamRoles" ("TeamRoleId");
+add constraint FK_TEAMPART_TEAMPARTI_TEAMROLE foreign key ("TeamRoleId")
+references "TeamRoles" ("TeamRoleId");
 
 alter table "TeamParticipants"
-   add constraint FK_TEAMPART_TEAM_PART_TEAMS foreign key ("TeamId")
-      references "Teams" ("TeamId");
+add constraint FK_TEAMPART_TEAM_PART_TEAMS foreign key ("TeamId")
+references "Teams" ("TeamId");
 
 alter table "TeamParticipants"
-   add constraint FK_TEAMPART_USER_TEAM_USERS foreign key ("UserId")
-      references "Users" ("UserId");
+add constraint FK_TEAMPART_USER_TEAM_USERS foreign key ("UserId")
+references "Users" ("UserId");
 
 alter table "Teams"
-   add constraint FK_TEAMS_CHAT_TEAM_CHATS foreign key ("ChatId")
-      references "Chats" ("ChatId");
+add constraint FK_TEAMS_CHAT_TEAM_CHATS foreign key ("ChatId")
+references "Chats" ("ChatId");
 
 alter table "Teams"
-   add constraint FK_TEAMS_GAME_TEAM_GAMES foreign key ("GameId")
-      references "Games" ("GameId");
+add constraint FK_TEAMS_GAME_TEAM_GAMES foreign key ("GameId")
+references "Games" ("GameId");
 
 alter table "Users"
-   add constraint FK_USERS_USER_CITY_CITIES foreign key ("CityId")
-      references "Cities" ("CityId");
+add constraint FK_USERS_USER_CITY_CITIES foreign key ("CityId")
+references "Cities" ("CityId");
 
 alter table "Users"
-   add constraint FK_USERS_USER_LANG_LANGUAGE foreign key ("LanguageId")
-      references "Languages" ("LanguageId");
-
+add constraint FK_USERS_USER_LANG_LANGUAGE foreign key ("LanguageId")
+references "Languages" ("LanguageId");
