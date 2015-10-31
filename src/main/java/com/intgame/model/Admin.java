@@ -1,4 +1,4 @@
-package com.intgame.model.domain;
+package com.intgame.model;
 
 /**
  * Created by vviital on 31/10/15.

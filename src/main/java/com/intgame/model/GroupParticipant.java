@@ -1,4 +1,4 @@
-package com.intgame.model.domain;
+package com.intgame.model;
 
 import java.util.Date;
 
