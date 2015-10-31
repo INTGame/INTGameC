@@ -1,11 +1,14 @@
-package com.intgame.model;
+package com.intgame.model.domain;
 
 /**
- * Created by bm on 31.10.15.
+ * Created by vviital on 31/10/15.
  */
-public class TeamRole {
+public class GroupRole {
+
     private int id;
-    private String role;
+
+    private String groupRole;
+
     private String roleDescription;
 
     public int getId() {
@@ -16,12 +19,12 @@ public class TeamRole {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getGroupRole() {
+        return groupRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setGroupRole(String groupRole) {
+        this.groupRole = groupRole;
     }
 
     public String getRoleDescription() {
