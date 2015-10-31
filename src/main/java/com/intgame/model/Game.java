@@ -1,6 +1,7 @@
 package com.intgame.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bm on 31.10.15.
@@ -13,6 +14,9 @@ public class Game {
     private Date date;
     private int rating;
     private int complicity;
+
+    private List<Question> questionList;
+    private List<Team> teamList;
 
     public int getId() {
         return id;
@@ -32,6 +36,22 @@ public class Game {
 
     public String getName() {
         return name;
+    }
+
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
     }
 
     public void setName(String name) {

@@ -1,5 +1,7 @@
 package com.intgame.model;
 
+import java.util.List;
+
 /**
  * Created by vviital on 31/10/15.
  */
@@ -11,6 +13,9 @@ public class Question {
     private String text;
 
     private String answer;
+
+    private List<MultimediaContent> multimediaContentList;
+    private List<Category> categories;
 
     public String getAnswer() {
         return answer;
@@ -44,4 +49,19 @@ public class Question {
         this.id = id;
     }
 
+    public List<MultimediaContent> getMultimediaContentList() {
+        return multimediaContentList;
+    }
+
+    public void setMultimediaContentList(List<MultimediaContent> multimediaContentList) {
+        this.multimediaContentList = multimediaContentList;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 }

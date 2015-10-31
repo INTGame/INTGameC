@@ -1,14 +1,19 @@
 package com.intgame.model;
 
+import java.util.List;
+
 /**
  * Created by bm on 31.10.15.
  */
 public class Chat {
+
     private int id;
     private Group group;
     private IndividualConversation individualConversation;
     private Team team;
     private String name;
+
+    private List<Message> messageList;
 
     public int getId() {
         return id;
@@ -36,6 +41,14 @@ public class Chat {
 
     public Team getTeam() {
         return team;
+    }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
     }
 
     public void setTeam(Team team) {

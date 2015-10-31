@@ -36,7 +36,7 @@ create index "Blog_Content_FK" on "BlogImages" (
 );
 
 /*==============================================================*/
-/* Table: "Blogs"                                               */
+/* Table: "Blog"                                               */
 /*==============================================================*/
 create table "Blogs" 
 (
@@ -394,7 +394,7 @@ create table "TeamParticipants"
    "UserId"             INTEGER,
    "TeamInviteDate"     DATE,
    "TeamAccessionDate"  DATE,
-   "Ñontribution"       INTEGER,
+   "ï¿½ontribution"       INTEGER,
    constraint PK_TEAMPARTICIPANTS primary key ("TeamParticipantId")
 );
 

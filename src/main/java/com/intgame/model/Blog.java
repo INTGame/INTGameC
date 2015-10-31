@@ -1,30 +1,33 @@
 package com.intgame.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by vviital on 31/10/15.
  */
-public class Blogs {
+public class Blog {
     private int id;
 
     private Language language;
 
     private User user;
 
-    private String blogTitle;
+    private String title;
 
     private Date date;
 
-    private BlogType blogType;
+    private BlogType type;
 
-    private byte[] content;
+    private String content;
 
-    public byte[] getContent() {
+    private List<Blog> blogList;
+
+    public String getContent() {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -48,16 +51,40 @@ public class Blogs {
         return user;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public BlogType getType() {
+        return type;
+    }
+
+    public void setType(BlogType type) {
+        this.type = type;
+    }
+
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
 
     public String getBlogTitle() {
-        return blogTitle;
+        return title;
     }
 
     public void setBlogTitle(String blogTitle) {
-        this.blogTitle = blogTitle;
+        this.title = blogTitle;
     }
 
     public Date getDate() {
@@ -69,10 +96,10 @@ public class Blogs {
     }
 
     public BlogType getBlogType() {
-        return blogType;
+        return type;
     }
 
     public void setBlogType(BlogType blogType) {
-        this.blogType = blogType;
+        this.type = blogType;
     }
 }

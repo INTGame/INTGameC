@@ -1,6 +1,7 @@
 package com.intgame.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bm on 31.10.15.
@@ -24,6 +25,14 @@ public class User {
     private Boolean subscribeFlag;
     private int rating;
     private int karma;
+
+    private List<Blog> blogs;
+    private List<Message> messages;
+    private List<Relationship> relationships;
+    private List<IndividualConversation> individualConversations;
+    private List<GroupParticipant> groupParticipants;
+    private List<TeamParticipant> teamParticipants;
+
 
     public int getId() {
         return id;
@@ -167,5 +176,53 @@ public class User {
 
     public void setKarma(int karma) {
         this.karma = karma;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Relationship> getRelationships() {
+        return relationships;
+    }
+
+    public void setRelationships(List<Relationship> relationships) {
+        this.relationships = relationships;
+    }
+
+    public List<IndividualConversation> getIndividualConversations() {
+        return individualConversations;
+    }
+
+    public void setIndividualConversations(List<IndividualConversation> individualConversations) {
+        this.individualConversations = individualConversations;
+    }
+
+    public List<GroupParticipant> getGroupParticipants() {
+        return groupParticipants;
+    }
+
+    public void setGroupParticipants(List<GroupParticipant> groupParticipants) {
+        this.groupParticipants = groupParticipants;
+    }
+
+    public List<TeamParticipant> getTeamParticipants() {
+        return teamParticipants;
+    }
+
+    public void setTeamParticipants(List<TeamParticipant> teamParticipants) {
+        this.teamParticipants = teamParticipants;
     }
 }

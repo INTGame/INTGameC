@@ -1,6 +1,7 @@
 package com.intgame.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bm on 31.10.15.
@@ -11,6 +12,9 @@ public class Group {
     private String name;
     private String info;
     private Date creationtDate;
+
+    private List<GroupParticipant> groupParticipants;
+    private List<Game> games;
 
     public int getId() {
         return id;
@@ -34,6 +38,22 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<GroupParticipant> getGroupParticipants() {
+        return groupParticipants;
+    }
+
+    public void setGroupParticipants(List<GroupParticipant> groupParticipants) {
+        this.groupParticipants = groupParticipants;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
 
     public String getInfo() {

@@ -9,6 +9,8 @@ public class BlogImage {
 
     private byte[] image;
 
+    private Blog blog;
+
     public byte[] getImage() {
         return image;
     }
@@ -23,5 +25,13 @@ public class BlogImage {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }

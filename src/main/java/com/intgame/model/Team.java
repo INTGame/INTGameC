@@ -1,6 +1,7 @@
 package com.intgame.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bm on 31.10.15.
@@ -10,6 +11,8 @@ public class Team {
     private Chat chat;
     private Game game;
     private Date creationTime;
+
+    List<TeamParticipant> participantList;
 
     public int getId() {
         return id;
@@ -41,5 +44,13 @@ public class Team {
 
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public List<TeamParticipant> getParticipantList() {
+        return participantList;
+    }
+
+    public void setParticipantList(List<TeamParticipant> participantList) {
+        this.participantList = participantList;
     }
 }
